@@ -20,6 +20,7 @@ client = Client(headless=False)
 def get_following_broadcasts_result(client, logger, login_account_id, login_account_pw):
 
     login = InstagramCommonCrawler(client=client, logger=logger).login(login_account_id, login_account_pw)
+    os.makedirs('live_jsons', exist_ok=True)
 
     if login:
         following_broadcasts = InstagramFollowingBroadcastsCrawler(client)
@@ -31,7 +32,7 @@ def get_following_broadcasts_result(client, logger, login_account_id, login_acco
             logger.info('time:{}, json:{}'.format(time.time(), user_json))
 
             if user_json and len(json.loads(user_json)['broadcasts']) > 0:
-                with open(fr'{int(time.time())}.json', 'w', newline='') as f:
+                with open(fr'live_jsons/{int(time.time())}.json', 'w', newline='') as f:
                     f.write(user_json)
 
                 for broadcast in json.loads(user_json)['broadcasts']:
