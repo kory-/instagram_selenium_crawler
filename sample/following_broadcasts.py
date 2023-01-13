@@ -57,3 +57,4 @@ except RecursionError as e:
 except Exception as e:
     logger.exception(f"Failed to function {e}")
     client.driver_quit()
+    get_following_broadcasts_result(client, logger, login_account_id, login_account_pw)
