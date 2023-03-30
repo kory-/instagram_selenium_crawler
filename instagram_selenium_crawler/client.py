@@ -15,7 +15,7 @@ class Client:
         capabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
         options = webdriver.ChromeOptions()
         if headless:
-            options.add_argument('--headless')
+            options.add_argument('--headless=new')
         options.add_argument("--disable-gpu")
         options.add_argument("--window-size=1980x1030")
         options.add_argument("--disable-dev-shm-usage")
